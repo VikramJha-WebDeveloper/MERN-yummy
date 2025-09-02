@@ -14,7 +14,7 @@ const Login = () => {
 
   useEffect(() => {
     console.log("running");
-    fetch("http://localhost:8000/me", {
+    fetch("https://mern-yummy-backend.onrender.com/me", {
       method: "GET",
       credentials: "include",
     })
@@ -45,7 +45,7 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-        const response = await fetch("http://localhost:8000/login", {
+        const response = await fetch("https://mern-yummy-backend.onrender.com/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password, isRemembered }),

@@ -25,7 +25,7 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState("");
 
   useEffect(()=>{
-    fetch("http://localhost:8000/me", {
+    fetch("https://mern-yummy-backend.onrender.com/me", {
       method: "GET",
       credentials: "include",
     }).then((response)=>{
@@ -48,7 +48,7 @@ const HomePage = () => {
   const logout = async (e) => {
       setIsLoading(true);
       try {
-          const response = await fetch("http://localhost:8000/logout", {
+          const response = await fetch("https://mern-yummy-backend.onrender.com/logout", {
             method: "GET",
             credentials: "include",
           });

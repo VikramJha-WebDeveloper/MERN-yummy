@@ -9,7 +9,7 @@ const bcrypt = require("bcryptjs");
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://mern-yummy.onrender.com",
     credentials: true,
 }));
 app.use(cookieParser());
@@ -91,9 +91,9 @@ app.post("/login", async(req, res)=>{
         const token = jwt.sign({user_id: foundUser._id}, secret_key, {expiresIn: "1h"});
         res.cookie("token", token, {
             httpOnly: true,
-            secure: process.env._NODE_ENV === "production",
+            secure: true,
             maxAge: 3600000,
-            sameSite: "strict",
+            sameSite: "None",
         });
         console.log("Login successful");
         return res.status(200).json({message: "Login successful"});
@@ -136,7 +136,11 @@ app.get("/me", verifyToken, async(req, res)=>{
 
 app.get("/logout", verifyToken, async(req, res)=>{
     try{
-        res.clearCookie("token");
+        res.clearCookie("token", {
+            httpOnly: true,
+            secure: true,
+            sameSite: "None"
+        });
     res.status(200).json({message: "Logout successfully"});
     }catch(err){
         console.log(err);

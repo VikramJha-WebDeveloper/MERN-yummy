@@ -14,7 +14,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    fetch("http://localhost:8000/me", {
+    fetch("https://mern-yummy-backend.onrender.com/me", {
       method: "GET",
       credentials: "include",
     }).then((response)=>{
@@ -45,7 +45,7 @@ const Register = () => {
     }
     setIsLoading(true);
     try {
-        const response = await fetch("http://localhost:8000/register", {
+        const response = await fetch("https://mern-yummy-backend.onrender.com/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ fullName, email, password, confirmPassword }),
