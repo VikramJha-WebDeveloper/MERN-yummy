@@ -59,7 +59,7 @@ const HomePage = () => {
           console.log(result);
           if (result.message) {
             toast.success(result.message);
-            window.location.reload();
+            navigate("/login");
           } else {
             toast.error("Something goes wrong");
           }
