@@ -25,10 +25,12 @@ const HomePage = () => {
   const [isLoading, setIsLoading] = useState("");
 
   useEffect(()=>{
+    setIsLoading(true)
     fetch("https://mern-yummy-backend.onrender.com/me", {
       method: "GET",
       credentials: "include",
     }).then((response)=>{
+      setIsLoading(false);
       return response.json();
     }).then((data)=>{
       console.log(data);
